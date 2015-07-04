@@ -1,0 +1,15 @@
+"AddonInfo"
+{
+	"mines_trio"
+	{
+		"MaxPlayers"		"9"
+	}
+	"desert_duo"
+	{
+		"MaxPlayers"		"10"
+	}
+	"forest_solo"
+	{
+		"MaxPlayers"		"10"
+	}
+}
