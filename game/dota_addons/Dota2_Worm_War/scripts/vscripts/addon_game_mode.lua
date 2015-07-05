@@ -75,7 +75,7 @@ function COverthrowGameMode:InitGameMode()
 	
 --	CustomNetTables:SetTableValue( "test", "value 1", {} );
 --	CustomNetTables:SetTableValue( "test", "value 2", { a = 1, b = 2 } );
-	self.SetFogOfWarDisabled(true) --[[Returns:void	Turn the fog of war on or off.	]]
+	
 
 	self.m_TeamColors = {}
 	self.m_TeamColors[DOTA_TEAM_GOODGUYS] = { 61, 210, 150 }	--		Teal
@@ -158,7 +158,7 @@ function COverthrowGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetFountainConstantManaRegen( 30 )
 	GameRules:GetGameModeEntity():SetBountyRunePickupFilter( Dynamic_Wrap( COverthrowGameMode, "BountyRunePickupFilter" ), self )
 	GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( COverthrowGameMode, "ExecuteOrderFilter" ), self )
-
+	GameRules:GetGameModeEntity():SetFogOfWarDisabled(true) --[[Returns:void Turn the fog of war on or off.	]]
 
 	ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( COverthrowGameMode, 'OnGameRulesStateChange' ), self )
 	ListenToGameEvent( "npc_spawned", Dynamic_Wrap( COverthrowGameMode, "OnNPCSpawned" ), self )
