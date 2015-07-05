@@ -4,7 +4,7 @@
 function COverthrowGameMode:ThinkSheepSpawn()
 	local r = RandomInt( 1, 100 )
 	if r > 10 then
-		self:SpawnSheepFood()
+		COverthrowGameMode:SpawnSheepFood()
 	end
 end
 
@@ -13,14 +13,16 @@ function COverthrowGameMode:SpawnSheepFood()
 	local r2 = RandomInt( 0, 1000 )
 	local xpos = (r1-500)*8; --convert random coords to map coords
 	local ypos = (r2-500)*8;
-	self:SpawnSheepEntity( Vector( xpos, ypos, 0 ) )
+	print("sheep position: ")
+	print(xpos)
+	print(ypos)
+	COverthrowGameMode:SpawnSheepEntity( Vector( xpos, ypos, 0 ) )
 end
 
 function COverthrowGameMode:SpawnSheepEntity( spawnPoint )
 	EmitGlobalSound("Item.PickUpGemWorld")
-	local newItem = CreateItem( "item_sheep_food", nil, nil )
-	local drop = CreateItemOnPositionForLaunch( spawnPoint, newItem )
-	--newItem:LaunchLootInitialHeight( false, 0, 500, 0.75, spawnPoint + RandomVector( RandomFloat( 250, 550 ) ) )
+	local newItem = CreateItem( "item_bag_of_gold", nil, nil )
+	local drop = CreateItemOnPositionSync(spawnPoint, newItem) --[[Returns:handle	Create a physical item at a given location	]]
 	newItem:SetContextThink( "KillLoot", function() return self:KillLoot( newItem, drop ) end, 60 )
 end
 
